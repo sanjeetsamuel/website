@@ -1,0 +1,15 @@
+
+  .nav-container {
+    padding: 0.5em 0;
+    display: flex;
+    text-decoration: none;
+    margin-left: -75px;
+    top : 80%;
+    width : 10%;
+    position: fixed;
+  }
+
+  ul {
+    list-style-type: none;
+  }
+
