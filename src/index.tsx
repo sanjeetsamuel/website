@@ -17,10 +17,44 @@ const Index = () => {
 
     const [loading, setLoading] = useState(true);
     const [about, onAbout] = useState(true);
-    const [projects, onProjects] = useState(true);
+    const [project, onProject] = useState(true);
+
+    const handleScroll = () => {
+        if (about) {
+            window.scrollTo({ top: window.innerHeight * 1, behavior: 'smooth' });
+            gsap.fromTo(".about-container", {
+                x: '-100vw',
+                opacity: 0
+            },
+            {
+                x: 0,
+                duration: 1,
+                ease: "power2.out",
+                opacity: 1,
+                onComplete: () => onAbout(true)
+            }
+            );
+        }
+            
+        if (project) {
+            window.scrollTo({ top: window.innerHeight * 2, behavior: 'smooth' });
+            gsap.fromTo(".projects-container", {
+                x: '100vw',
+                opacity: 0
+            },
+            {
+                x: 0,
+                duration: 1,
+                ease: "power2.out",
+                opacity: 1,
+                onComplete: () => onProject(true)
+            });
+        }
+    }
 
 
     useEffect(() => {
+
         gsap.to(".loading-container", {
             opacity: 1,
             duration: 1,
@@ -40,46 +74,46 @@ const Index = () => {
         gsap.fromTo(".title-container", {
             y: '100vh',
         },
-            {
-                y: 0,
-                delay: 3,
-                borderRadius: "0%",
-                duration: 3,
-                ease: "power2.out",
-                onComplete: () => setLoading(false)
-            }
-        );
+        {
+            y: 0,
+            delay: 3,
+            borderRadius: "0%",
+            duration: 3,
+            ease: "power2.out",
+            onComplete: () => setLoading(false)
+        });
 
         gsap.fromTo(".link-container", {
             y: '100vh'
         },
-            {
-                y: 0,
-                delay: 3,
-                duration: 3,
-                ease: "power2.out",
-                position: "fixed",
-                onComplete: () => setLoading(false)
-            }
-        );
+        {
+            y: 0,
+            delay: 3,
+            duration: 3,
+            ease: "power2.out",
+            position: "fixed",
+            onComplete: () => setLoading(false)
+        });
 
         gsap.fromTo(".nav-container", {
             y: '100vh'
         },
-            {
-                y: 0,
-                delay: 3,
-                duration: 3,
-                ease: "power2.out",
-                position: "fixed",
-                onComplete: () => setLoading(false)
-            }
-        );
+        {
+            y: 0,
+            delay: 3,
+            duration: 3,
+            ease: "power2.out",
+            position: "fixed",
+            onComplete: () => setLoading(false)
+        });
         
-
-
     }, []);
 
+    useEffect(() => {
+            if (!loading)
+                handleScroll();
+
+    }, [about, project]);
 
 
 
@@ -127,8 +161,8 @@ const Index = () => {
 
             <div className='nav-container'>
                 <ul>
-                    <li><a className='nav-link' href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: window.innerHeight * 1, behavior: 'smooth' }), onAbout(true), onProjects(false) }}>About Me</a></li>
-                    <li><a className='nav-link' href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: window.innerHeight * 2, behavior: 'smooth' }), onAbout(false), onProjects(true); }}>Projects</a></li>
+                    <li><a className='nav-link' href="#" onClick={(e) => { e.preventDefault(); onAbout(true), onProject(false) }}>About Me</a></li>
+                    <li><a className='nav-link' href="#" onClick={(e) => { e.preventDefault(); onAbout(false), onProject(true) }}>Projects</a></li>
                 </ul>
 
             </div>
