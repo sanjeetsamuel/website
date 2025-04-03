@@ -14,6 +14,7 @@
     "@emotion/styled": "^11.14.0",
     "@gsap/react": "^2.1.1",
     "@mui/material": "^6.4.8",
+    "@smakss/react-scroll-direction": "^4.2.0",
     "framer-motion": "^12.5.0",
     "gsap": "^3.12.5",
     "react": "^18.3.1",
