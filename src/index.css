@@ -15,6 +15,23 @@ body {
   font-style: normal;
 }
 
+.loading-container {
+  display: flex;
+  justify-content: center;
+  position:absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: white;
+}
+
+.load  {
+  color: #EF233C;
+  margin-top: 20%;
+  left: 0;
+}
+
 .title-container {
   display: flex;
   justify-content: center;
@@ -65,7 +82,7 @@ li {
 .about-container {
   justify-content: left;
   align-items: left;
-  margin-top: 20%;
+  margin-top: 15%;
   margin-left : 4%;
   background-color: white;
   height: 100%;
@@ -88,7 +105,7 @@ li {
 .projects-container {
   justify-content: left;
   align-items: left;
-  margin-top: 22%;
+  margin-top: 12%;
   margin-left : 4%;
   background-color: white;
   height: 100%;
