@@ -161,12 +161,14 @@ const Index = () => {
                 </div>
 
                 <div className='grid-ro-2'>
-                    <div className='grid-content'> 
-                        <img className='p-img' src={wordle} width='350' height='150'></img>
-                        <p>
-                            Created a clone of worldle using react and typescript. The application allows users to guess the word based on the hints provided.
-                            The game provides feedback for each guess, indicating which letters are correct.
-                        </p>
+                    <div className='grid-content'>
+                        <a href="https://sanjeetsamuel.github.io/Wordle/">
+                            <img className='p-img' src={wordle} width='350' height='150'></img>
+                            <p>
+                                Created a clone of worldle using react and typescript. The application allows users to guess the word based on the hints provided.
+                                The game provides feedback for each guess, indicating which letters are correct.
+                            </p>
+                        </a>
                     </div>
 
                     <div className='grid-content'>
