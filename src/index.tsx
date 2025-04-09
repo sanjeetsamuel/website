@@ -162,7 +162,7 @@ const Index = () => {
 
                 <div className='grid-ro-2'>
                     <div className='grid-content'>
-                        <a href="https://sanjeetsamuel.github.io/Wordle/">
+                        <a href="https://sanjeetsamuel.github.io/Wordle/" target="_blank">
                             <img className='p-img' src={wordle} width='350' height='150'></img>
                         </a>
                             <p>
