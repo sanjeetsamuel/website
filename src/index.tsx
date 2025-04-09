@@ -1,6 +1,5 @@
 // import React, { useEffect } from 'react';
 import './index.css';
-import ReactLoading from 'react-loading';
 import { useEffect, useState } from 'react';
 // import { Box } from '@mui/material';
 import { gsap } from 'gsap';
@@ -15,9 +14,9 @@ import llm from './assets/images/LLM.jpg';
 
 const Index = () => {
 
-    const [loading, setLoading] = useState(true);
-    const [about, onAbout] = useState(true);
-    const [project, onProject] = useState(true);
+    // const [title, onTitle] = useState(true);
+    const [about, onAbout] = useState(false);
+    const [project, onProject] = useState(false);
 
     const handleScroll = () => {
         if (about) {
@@ -34,6 +33,13 @@ const Index = () => {
                 onComplete: () => onAbout(true)
             }
             );
+
+            gsap.to(".projects-container", {
+                x: '100vw',
+                opacity: 0,
+                duration: 1,
+                ease: "power2.out"
+            });
         }
             
         if (project) {
@@ -49,69 +55,18 @@ const Index = () => {
                 opacity: 1,
                 onComplete: () => onProject(true)
             });
+
+            gsap.to(".about-container", {
+                x: '-100vw',
+                opacity: 0,
+                duration: 1,
+                ease: "power2.out",
+            });
         }
     }
 
-
     useEffect(() => {
-
-        gsap.to(".loading-container", {
-            opacity: 1,
-            duration: 1,
-            repeat: 0,
-            yoyo: true,
-            ease: "power1.inOut",
-            delay: 2
-        });
-
-        gsap.to(".loading-container h1", {
-            y: 20,
-            duration: 0.5,
-            repeat: -1,
-            yoyo: true,
-        });
-
-        gsap.fromTo(".title-container", {
-            y: '100vh',
-        },
-        {
-            y: 0,
-            delay: 3,
-            borderRadius: "0%",
-            duration: 3,
-            ease: "power2.out",
-            onComplete: () => setLoading(false)
-        });
-
-        gsap.fromTo(".link-container", {
-            y: '100vh'
-        },
-        {
-            y: 0,
-            delay: 3,
-            duration: 3,
-            ease: "power2.out",
-            position: "fixed",
-            onComplete: () => setLoading(false)
-        });
-
-        gsap.fromTo(".nav-container", {
-            y: '100vh'
-        },
-        {
-            y: 0,
-            delay: 3,
-            duration: 3,
-            ease: "power2.out",
-            position: "fixed",
-            onComplete: () => setLoading(false)
-        });
-        
-    }, []);
-
-    useEffect(() => {
-            if (!loading)
-                handleScroll();
+        handleScroll();
 
     }, [about, project]);
 
@@ -119,14 +74,6 @@ const Index = () => {
 
     return (
         <>
-
-            {loading && (
-                <div className="loading-container">
-                    <ReactLoading className='load' type="bubbles" color="#EF233C"
-                        height={100} width={50} />
-                </div>
-
-            )}
 
             <link href="https://www.fontspace.com/american-captain-font-f10784" rel="stylesheet" />
             <div className="title-container">
@@ -161,10 +108,10 @@ const Index = () => {
 
             <div className='nav-container'>
                 <ul>
+                    <li><a className='nav-link' href="#" onClick={(e) => { e.preventDefault(); onAbout(false), onProject(false), window.scrollTo({ top: 0, behavior: 'smooth' }); }}>Title</a></li>
                     <li><a className='nav-link' href="#" onClick={(e) => { e.preventDefault(); onAbout(true), onProject(false) }}>About Me</a></li>
                     <li><a className='nav-link' href="#" onClick={(e) => { e.preventDefault(); onAbout(false), onProject(true) }}>Projects</a></li>
                 </ul>
-
             </div>
 
 
@@ -234,7 +181,7 @@ const Index = () => {
 
             </div>
 
-            <footer className='footer'><p>SDFHJKLSDFHJKLSFHJKLSFHJKL</p></footer>
+            <footer className='footer'><p>s</p></footer>
 
 
         </>
